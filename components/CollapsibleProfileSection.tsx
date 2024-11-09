@@ -1,7 +1,8 @@
-import {StyleSheet, TouchableOpacity, View} from "react-native";
+import {Collapsible} from "@/components/Collapsible";
+import {TouchableOpacity, View, StyleSheet} from "react-native";
 import {ThemedText} from "@/components/ThemedText";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import React, {ReactNode} from "react";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 interface ProfileSectionProps {
     title: string;
@@ -9,12 +10,12 @@ interface ProfileSectionProps {
     children?: ReactNode;
 }
 
-const OrdinaryProfileSection = ({ title, content, children }: ProfileSectionProps) => {
-    return (
+const CollapsibleProfileSection = ({ title, content, children }: ProfileSectionProps) => {    return (
         <View style={styles.container}>
-            <ThemedText style={[styles.title, { marginBottom: 5 }]}>{title}</ThemedText>
-            <ThemedText>{content}</ThemedText>
-            {children}
+            <Collapsible title={title}>
+                <ThemedText>{content}</ThemedText>
+                {children}
+            </Collapsible>
             <TouchableOpacity style={styles.editIcon}>
                 <Ionicons name="pencil" size={20} color="#333" />
             </TouchableOpacity>
@@ -26,9 +27,6 @@ const styles = StyleSheet.create({
     container: {
         position: 'relative',
     },
-    title: {
-        fontWeight: 'bold',
-    },
     editIcon: {
         position: 'absolute',
         top: 0,
@@ -38,8 +36,8 @@ const styles = StyleSheet.create({
         height: 1,
         backgroundColor: '#D3D3D3',
         marginVertical: 8,
-    },
+        },
 
 });
 
-export default OrdinaryProfileSection;
+export default CollapsibleProfileSection;
