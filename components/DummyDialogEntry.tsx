@@ -2,13 +2,28 @@ import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
 import {StyleSheet} from "react-native";
 
-export function DummyDialog({ title, lastMessage }: { title: string; lastMessage: string }) {
+interface DummyDialogProps {
+    name: string;
+    lastMessage: string;
+    sentAt: string;
+    unreadMessages: number;
+}
+
+export function DummyDialog({ name, lastMessage, sentAt, unreadMessages }: DummyDialogProps) {
     return (
         <ThemedView style={styles.container}>
             <ThemedView style={styles.avatar} />
-            <ThemedView>
-                <ThemedText type="title">{title}</ThemedText>
-                <ThemedText type="default">{lastMessage}</ThemedText>
+            <ThemedView style={styles.textContainer}>
+                <ThemedText type="title" style={styles.name}>{name}</ThemedText>
+                <ThemedText type="default" style={styles.lastMessage}>{lastMessage}</ThemedText>
+            </ThemedView>
+            <ThemedView style={styles.rightContainer}>
+                <ThemedText type="default" style={styles.sentAt}>{sentAt}</ThemedText>
+                {unreadMessages > 0 && (
+                    <ThemedView style={styles.unreadIndicator}>
+                        <ThemedText type="default">{unreadMessages}</ThemedText>
+                    </ThemedView>
+                )}
             </ThemedView>
         </ThemedView>
     );
@@ -20,14 +35,40 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         gap: 10,
     },
+    default: {
+        fontSize: 16,
+        lineHeight: 24,
+    },
+    name: {
+        fontSize: 18,
+    },
+    lastMessage: {
+        fontSize: 16,
+    },
+    textContainer: {
+        flex: 1,
+    },
+    rightContainer: {
+        alignItems: 'flex-end',
+        justifyContent: 'space-between',
+        height: '100%',
+    },
     avatar: {
         width: 40,
         height: 40,
         borderRadius: 20,
         backgroundColor: '#8181F5',
     },
-    default: {
-        fontSize: 16,
-        lineHeight: 24,
+    unreadIndicator: {
+        backgroundColor: '#F58183',
+        borderRadius: 10,
+        width: 20,
+        height: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    sentAt: {
+        fontSize: 14,
+        color: '#A0A7B1',
     },
 });

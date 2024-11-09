@@ -1,4 +1,5 @@
 import { TextInput, useColorScheme, StyleSheet, TextInputProps, ViewStyle } from "react-native";
+
 export default function ThemedTextInput({ style, ...props }: { style?: ViewStyle } & TextInputProps) {    const theme = useColorScheme();
 
     return (

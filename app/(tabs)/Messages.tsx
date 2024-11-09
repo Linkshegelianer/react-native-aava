@@ -6,6 +6,14 @@ import {ThemedView} from '@/components/ThemedView';
 import {DummyDialog} from "@/components/DummyDialogEntry";
 import ThemedTextInput from "@/components/ThemedTextInput";
 
+const dummyData = [
+  { title: "Alice", lastMessage: "Пластмассовый мир победил", sentAt: "5min ago", unreadMessages: 1 },
+  { title: "Bob", lastMessage: "Макет оказался сильней", sentAt: "5min ago", unreadMessages: 2 },
+  { title: "Charlie", lastMessage: "Последний кораблик остыл", sentAt: "5min ago", unreadMessages: 3 },
+  { title: "Diana", lastMessage: "Последний фонарик устал", sentAt: "5min ago", unreadMessages: 4 },
+  { title: "Eve", lastMessage: "А в горле сопят комья воспоминаний", sentAt: "5min ago", unreadMessages: 5 },
+];
+
 export default function MessagesScreen() {
   return (
       <ParallaxScrollView
@@ -19,11 +27,15 @@ export default function MessagesScreen() {
           <ThemedTextInput placeholder="Search message" style={styles.searchInput} />
         </ThemedView>
         <ThemedView >
-          <DummyDialog title="Conversation 1" lastMessage="Hello, how are you?" />
-          <DummyDialog title="Conversation 2" lastMessage="Don't forget our meeting tomorrow." />
-          <DummyDialog title="Conversation 3" lastMessage="Can you review this document?" />
-          <DummyDialog title="Conversation 4" lastMessage="Thanks for your help!" />
-          <DummyDialog title="Conversation 5" lastMessage="Looking forward to the weekend." />
+          {dummyData.map((data, index) => (
+              <DummyDialog
+                  key={index}
+                  name={data.title}
+                  lastMessage={data.lastMessage}
+                  sentAt={data.sentAt}
+                  unreadMessages={data.unreadMessages}
+              />
+          ))}
         </ThemedView>
       </ParallaxScrollView>
   );
