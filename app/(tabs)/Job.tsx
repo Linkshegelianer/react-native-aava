@@ -1,4 +1,4 @@
-import {Image, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import {ThemedView} from '@/components/ThemedView';
 import SwipeableCards from '../../components/SwipableCard';
