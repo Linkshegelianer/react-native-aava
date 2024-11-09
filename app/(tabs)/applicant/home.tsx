@@ -2,100 +2,130 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
-import {Collapsible} from "@/components/Collapsible";
-import {ExternalLink} from "@/components/ExternalLink";
-import {Image, Platform, StyleSheet} from "react-native";
+import {StyleSheet, View, Text} from "react-native";
+import ProfileSection from "@/components/ProfileSection";
+import CollapsibleProfileSection from "@/components/CollapsibleProfileSection";
+import ProfileSectionEntry from "@/components/ProfileSectionEntry";
+import Tag from "@/components/Tag";
+import {FontAwesome} from "@expo/vector-icons";
 
-export default function ApplicantProfileScreen() {
+const workExperienceData = [
+    {
+        header: "UX/UI Designer",
+        content: "Led end-to-end design for a B2B platform, enhancing user flows and interface consistency at Pipapo.",
+        timePeriod: "Jan 2020 - Dec 2021"
+    },
+    {
+        header: "Product Designer",
+        content: "Created wireframes and prototypes for new features, collaborating with developers to ensure a smooth user experience at Company B.",
+        timePeriod: "Feb 2018 - Dec 2019"
+    },
+    {
+        header: "Junior Designer",
+        content: "Designed branding and website visuals, improving the digital presence and user engagement at Company C.",
+        timePeriod: "Mar 2016 - Jan 2018"
+    },
+];
+
+const educationData = [
+    {
+        header: "Master of Science in Human-Computer Interaction",
+        content: "Advanced studies in usability testing, interaction design, and cognitive psychology at Tech University.",
+        timePeriod: "Sep 2019 - Jun 2021"
+    },
+    {
+        header: "Bachelor of Arts in Graphic Design",
+        content: "Studied visual communication and user experience design at University of Design.",
+        timePeriod: "Sep 2014 - Jun 2018"
+    },
+    {
+        header: "Certification in UX Design",
+        content: "Completed an intensive course focusing on user research and prototyping at UX Academy.",
+        timePeriod: "Jan 2019 - Apr 2019"
+    },
+];
+
+const skills = ["Adobe XD", "Figma", "Sketch", "Remote-teams", "Problem-solving"];
+
+export default function ProfileScreen() {
     return (
         <ParallaxScrollView
-            headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-            headerImage={<Ionicons size={310} name="code-slash" style={styles.headerImage} />}>
-            <ThemedView style={styles.titleContainer}>
-                <ThemedText type="title">Explore</ThemedText>
+            headerBackgroundColor={{light: '#E4E6FF', dark: '#E4E6FF'}}
+            headerImage={<Ionicons size={310} name="cloud-outline" style={styles.headerImage}/>}>
+            <ThemedView>
+                <ThemedText style={styles.title} type="title">Hello, Orlando!</ThemedText>
             </ThemedView>
-            <ThemedText>This app includes example code to help you get started.</ThemedText>
-            <Collapsible title="File-based routing">
-                <ThemedText>
-                    This app has two screens:{' '}
-                    <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> and{' '}
-                    <ThemedText type="defaultSemiBold">app/(tabs)/explore.tsx</ThemedText>
-                </ThemedText>
-                <ThemedText>
-                    The layout file in <ThemedText type="defaultSemiBold">app/(tabs)/_layout.tsx</ThemedText>{' '}
-                    sets up the tab navigator.
-                </ThemedText>
-                <ExternalLink href="https://docs.expo.dev/router/introduction">
-                    <ThemedText type="link">Learn more</ThemedText>
-                </ExternalLink>
-            </Collapsible>
-            <Collapsible title="Android, iOS, and web support">
-                <ThemedText>
-                    You can open this project on Android, iOS, and the web. To open the web version, press{' '}
-                    <ThemedText type="defaultSemiBold">w</ThemedText> in the terminal running this project.
-                </ThemedText>
-            </Collapsible>
-            <Collapsible title="Images">
-                <ThemedText>
-                    For static images, you can use the <ThemedText type="defaultSemiBold">@2x</ThemedText> and{' '}
-                    <ThemedText type="defaultSemiBold">@3x</ThemedText> suffixes to provide files for
-                    different screen densities
-                </ThemedText>
-                <Image source={require('@/assets/images/react-logo.png')} style={{ alignSelf: 'center' }} />
-                <ExternalLink href="https://reactnative.dev/docs/images">
-                    <ThemedText type="link">Learn more</ThemedText>
-                </ExternalLink>
-            </Collapsible>
-            <Collapsible title="Custom fonts">
-                <ThemedText>
-                    Open <ThemedText type="defaultSemiBold">app/_layout.tsx</ThemedText> to see how to load{' '}
-                    <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-                        custom fonts such as this one.
-                    </ThemedText>
-                </ThemedText>
-                <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-                    <ThemedText type="link">Learn more</ThemedText>
-                </ExternalLink>
-            </Collapsible>
-            <Collapsible title="Light and dark mode components">
-                <ThemedText>
-                    This template has light and dark mode support. The{' '}
-                    <ThemedText type="defaultSemiBold">useColorScheme()</ThemedText> hook lets you inspect
-                    what the user's current color scheme is, and so you can adjust UI colors accordingly.
-                </ThemedText>
-                <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-                    <ThemedText type="link">Learn more</ThemedText>
-                </ExternalLink>
-            </Collapsible>
-            <Collapsible title="Animations">
-                <ThemedText>
-                    This template includes an example of an animated component. The{' '}
-                    <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
-                    the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText> library
-                    to create a waving hand animation.
-                </ThemedText>
-                {Platform.select({
-                    ios: (
-                        <ThemedText>
-                            The <ThemedText type="defaultSemiBold">components/ParallaxScrollView.tsx</ThemedText>{' '}
-                            component provides a parallax effect for the header image.
-                        </ThemedText>
-                    ),
-                })}
-            </Collapsible>
+            <ProfileSection title="About me"
+                            content="I’m a UI/UX designer passionate about creating meaningful, user-centered experiences that seamlessly blend functionality with aesthetics. My approach to design is rooted in empathy, aiming to understand and anticipate users' needs to make digital interactions as intuitive and enjoyable as possible."/>
+            <CollapsibleProfileSection title="Work experience" content="">
+                {workExperienceData.map((entry, index) => (
+                    <View key={index} style={{marginBottom: 5}}>
+                        <ProfileSectionEntry header={entry.header} content={entry.content}
+                                             timePeriod={entry.timePeriod}/>
+                    </View>
+                ))}
+            </CollapsibleProfileSection>
+            <ProfileSection title="Superpowers">
+                <View style={{flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginTop: 5}}>
+                    {skills.map((skill, index) => (
+                        <Tag key={index} text={skill} type="skillTag"/>
+                    ))}
+                </View>
+            </ProfileSection>
+            <CollapsibleProfileSection title="Education" content="">
+                {educationData.map((entry, index) => (
+                    <View key={index} style={{marginBottom: 5}}>
+                        <ProfileSectionEntry header={entry.header} content={entry.content}
+                                             timePeriod={entry.timePeriod}/>
+                    </View>
+                ))}
+            </CollapsibleProfileSection>
+            <ProfileSection title="Resume">
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5, marginLeft: 5 }}>
+                    <View style={styles.iconContainer}>
+                        <FontAwesome name="file-pdf-o" size={24} color="#FF5D5D" />
+                    </View>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.title}>Orlando Bloom - CV - UI/UX Designer</Text>
+                        <Text style={styles.subtitle}>867 Kb • 14 Feb 2022 at 11:30 am</Text>
+                    </View>
+                </View>
+            </ProfileSection>
+
+
         </ParallaxScrollView>
     );
 }
 
 const styles = StyleSheet.create({
     headerImage: {
-        color: '#808080',
+        color: '#8181F5',
         bottom: -90,
         left: -35,
         position: 'absolute',
     },
+    title: {
+        fontSize: 18,
+    },
     titleContainer: {
         flexDirection: 'row',
         gap: 8,
+        fontSize: 18,
+    },
+    iconContainer: {
+        width: 40,
+        height: 40,
+        borderRadius: 8,
+        backgroundColor: '#FFDDDD',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 12,
+    },
+    textContainer: {
+        flex: 1,
+    },
+    subtitle: {
+        fontSize: 12,
+        color: '#666',
     },
 });

@@ -1,8 +1,8 @@
 import {Image, StyleSheet} from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import {ThemedView} from '@/components/ThemedView';
-import SwipeableCards from '../../../components/SwipableCard';
 import Ionicons from "@expo/vector-icons/Ionicons";
+import SwipeableCardScreen from "@/components/SwipeableCardScreen";
 
 export default function ApplicantJobScreen() {
   return (
@@ -10,7 +10,7 @@ export default function ApplicantJobScreen() {
           headerBackgroundColor={{ light: '#E4E6FF', dark: '#E4E6FF' }}
           headerImage={<Ionicons size={310} name="cloud-outline" style={styles.headerImage} />}>
         <ThemedView style={styles.stepContainer}>
-              <SwipeableCards />
+              <SwipeableCardScreen />
         </ThemedView>
     </ParallaxScrollView>
   );
