@@ -2,7 +2,7 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
-import {Image, StyleSheet, Text, View} from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 import CollapsibleProfileSection from "@/components/CollapsibleProfileSection";
 import ProfileSectionEntry from "@/components/ProfileSectionEntry";
 import ProfileSection from "@/components/ProfileSection";
@@ -48,10 +48,6 @@ const educationData = [
 
 const skills = ["Adobe XD", "Figma", "Sketch", "Remote-teams", "Problem-solving"];
 
-const resumeImage = { icon: '../assets/images/profile/pdf-resume.png', text: '3 years' };
-
-
-
     export default function ProfileScreen() {
     return (
         <ParallaxScrollView
@@ -86,7 +82,7 @@ const resumeImage = { icon: '../assets/images/profile/pdf-resume.png', text: '3 
                 ))}
             </CollapsibleProfileSection>
             <ProfileSection title="Resume">
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 5, marginLeft: 5 }}>
                     <View style={styles.iconContainer}>
                         <FontAwesome name="file-pdf-o" size={24} color="#FF5D5D" />
                     </View>

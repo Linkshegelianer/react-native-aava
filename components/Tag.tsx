@@ -1,15 +1,17 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 
 interface TagProps {
     text: string;
-    type: "jobTab" | "skillTag" ;
+    type: "jobTag" | "skillTag";
+    icon?: string;
+    style?: object;
 }
 
-const Tag = ({ text, type }: TagProps) => {
+const Tag = ({ text, type, icon, style }: TagProps) => {
     const getTagStyle = () => {
         switch (type) {
-            case "jobTab":
+            case "jobTag":
                 return styles.job;
             case "skillTag":
                 return styles.skill;
@@ -17,7 +19,8 @@ const Tag = ({ text, type }: TagProps) => {
     };
 
     return (
-        <View style={[styles.tag, getTagStyle()]}>
+        <View style={[styles.tag, getTagStyle(), style]}>
+            {icon && <Image style={styles.skillIcon} source={{ uri: icon }} />}
             <Text style={styles.text}>{text}</Text>
         </View>
     );
@@ -29,16 +32,25 @@ const styles = StyleSheet.create({
         paddingHorizontal: 8,
         borderRadius: 15,
         alignSelf: "flex-start",
+        flexDirection: "row",
+        alignItems: "center",
     },
     text: {
         fontSize: 14,
     },
     job: {
-        backgroundColor: "#E4E6FF",
+        backgroundColor: "#FFFFFF",
+        color: "#0D0140",
+
     },
     skill: {
         backgroundColor: "#E4E6FF",
         color: "#000",
+    },
+    skillIcon: {
+        width: 18,
+        height: 18,
+        marginRight: 5,
     },
 });
 

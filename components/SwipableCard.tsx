@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, PanResponder, Animated } from 'react-native';
+import Tag from "@/components/Tag";
 
 interface Company {
     legalName: string;
@@ -72,22 +73,8 @@ const SwipeableCards: React.FC = () => {
                                     <Text style={styles.name}>{person.legalName}</Text>
                                 </View>
                                 <View style={styles.contactInfoContainer}>
-                                    {dummyAssets.map((asset, index) => (
-                                        <View key={index} style={styles.contactInfo}>
-                                            <Image style={styles.skillIcon} source={asset.icon} alt={asset.text} />
-                                            <Text style={styles.contactText}>{asset.text}</Text>
-                                        </View>
-                                    ))}
-                                </View>
-                            </View>
-                            <View style={styles.skillsElement}>
-                                <Text style={styles.skillsTitle}>Superpowers:</Text>
-                                <View style={styles.skillContainer}>
-                                    <Text style={styles.skillBlock}>Adobe XD</Text>
-                                    <Text style={styles.skillBlock}>Figma</Text>
-                                    <Text style={styles.skillBlock}>Sketch</Text>
-                                    <Text style={styles.skillBlock}>Remote-teams</Text>
-                                    <Text style={styles.skillBlock}>Problem-Solving</Text>
+                                    {dummyAssets.map((skill, index) => (
+                                        <Tag key={index} text={skill.text} type="jobTag" icon={skill.icon} style={{ marginTop: -10 }}/>                                    ))}
                                 </View>
                             </View>
                         </Animated.View>
@@ -106,15 +93,10 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f0f0f0',
     },
     cardElement: {
-        marginTop: 35,
-        justifyContent: 'center',
-        alignItems: 'center',
     },
     cardContainer: {
-        width: '80%',
         maxWidth: 500,
         display: 'flex',
         justifyContent: 'center',
@@ -149,40 +131,29 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     infoBlock: {
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: 'auto',
+
     },
     occupation: {
         textAlign: 'center',
-        fontFamily: 'Roboto',
         fontSize: 24,
         fontWeight: 700,
     },
     mainText: {
-        marginBottom: 16,
+        marginBottom: 20,
     },
     name: {
         textAlign: 'center',
-        fontFamily: 'Roboto',
         fontSize: 20,
         fontWeight: 400,
     },
     nameHolder: {
-        width: '100%',
-        textAlign: 'center',
-        color: '#333',
-        fontSize: 20,
-        fontWeight: 'bold',
-        marginBottom: 15,
+
     },
     contactInfoContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        width: '100%',
         marginBottom: 48,
+        gap: 3,
     },
     contactInfo: {
         display: "flex",
@@ -197,7 +168,6 @@ const styles = StyleSheet.create({
     },
     contactText: {
         lineHeight: 16,
-        fontFamily: "Roboto",
         fontSize: 16,
     },
     skillIcon: {
