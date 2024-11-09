@@ -14,9 +14,9 @@ const companies: Company[] = [
 ];
 
 const tags = [
-    { icon: 'info', text: '3 years' },
-    { icon: 'book', text: 'California' },
-    { icon: 'anchor', text: '1 day ago' },
+    { icon: 'clock-o', text: '3 years' },
+    { icon: 'map-marker', text: 'California' },
+    { icon: 'calendar', text: '1 day ago' },
 ];
 
 const SwipeableCards: React.FC = () => {
