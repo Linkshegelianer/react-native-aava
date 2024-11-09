@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, PanResponder, Animated } from 'react-native';
 
-interface Person {
-    name: string;
+interface Company {
+    legalName: string;
     url: any;
 }
 
-const companies: Person[] = [
-    { name: 'Google', url: '../assets/images/jobs/google-logo.png' },
-    { name: 'Oracle', url: '../assets/images/jobs/oracle-logo.png' },
-    { name: 'Aava', url: '../assets/images/jobs/aava-logo.png' },
+const companies: Company[] = [
+    { legalName: 'Google', url: '../assets/images/jobs/google-logo.png' },
+    { legalName: 'Oracle', url: '../assets/images/jobs/oracle-logo.png' },
+    { legalName: 'Aava', url: '../assets/images/jobs/aava-logo.png' },
 ];
 
 const dummyAssets = [
@@ -55,7 +55,7 @@ const SwipeableCards: React.FC = () => {
                 {companies.map((person, index) => (
                     index === currentIndex && (
                         <Animated.View
-                            key={person.name}
+                            key={person.legalName}
                             style={[styles.card, {
                                 transform: [
                                     { translateX: position.x },
@@ -69,7 +69,7 @@ const SwipeableCards: React.FC = () => {
                             <View style={styles.infoBlock}>
                                 <View style={styles.mainText}>
                                     <Text style={styles.occupation}>UX/UI Designer</Text>
-                                    <Text style={styles.name}>{person.name}</Text>
+                                    <Text style={styles.name}>{person.legalName}</Text>
                                 </View>
                                 <View style={styles.contactInfoContainer}>
                                     {dummyAssets.map((asset, index) => (

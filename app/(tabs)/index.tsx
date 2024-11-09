@@ -2,11 +2,13 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
-import {StyleSheet, View} from "react-native";
+import {Image, StyleSheet, Text, View} from "react-native";
 import CollapsibleProfileSection from "@/components/CollapsibleProfileSection";
 import ProfileSectionEntry from "@/components/ProfileSectionEntry";
 import ProfileSection from "@/components/ProfileSection";
 import Tag from "@/components/Tag";
+import React from "react";
+import {FontAwesome} from "@expo/vector-icons";
 
 const workExperienceData = [
     {
@@ -46,7 +48,11 @@ const educationData = [
 
 const skills = ["Adobe XD", "Figma", "Sketch", "Remote-teams", "Problem-solving"];
 
-export default function ProfileScreen() {
+const resumeImage = { icon: '../assets/images/profile/pdf-resume.png', text: '3 years' };
+
+
+
+    export default function ProfileScreen() {
     return (
         <ParallaxScrollView
             headerBackgroundColor={{light: '#E4E6FF', dark: '#E4E6FF'}}
@@ -79,9 +85,19 @@ export default function ProfileScreen() {
                     </View>
                 ))}
             </CollapsibleProfileSection>
+            <ProfileSection title="Resume">
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={styles.iconContainer}>
+                        <FontAwesome name="file-pdf-o" size={24} color="#FF5D5D" />
+                    </View>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.title}>Orlando Bloom - CV - UI/UX Designer</Text>
+                        <Text style={styles.subtitle}>867 Kb • 14 Feb 2022 at 11:30 am</Text>
+                    </View>
+                </View>
+            </ProfileSection>
 
 
-            <ThemedText style={styles.titleContainer} type="title">Resume</ThemedText>
         </ParallaxScrollView>
     );
 }
@@ -94,11 +110,27 @@ const styles = StyleSheet.create({
         position: 'absolute',
     },
     title: {
-        fontSize: 24,
+        fontSize: 18,
     },
     titleContainer: {
         flexDirection: 'row',
         gap: 8,
         fontSize: 18,
+    },
+    iconContainer: {
+        width: 40,
+        height: 40,
+        borderRadius: 8,
+        backgroundColor: '#FFDDDD',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 12,
+    },
+    textContainer: {
+        flex: 1,
+    },
+    subtitle: {
+        fontSize: 12,
+        color: '#666',
     },
 });
