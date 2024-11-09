@@ -1,7 +1,7 @@
 import {Image, StyleSheet} from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import {ThemedView} from '@/components/ThemedView';
-import SwipeableCards from '../../components/SwipableCard';
+import SwipeableCards from '../../../components/SwipableCard';
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function JobScreen() {

@@ -144,6 +144,7 @@ const styles = StyleSheet.create({
     userLogo: {
         width: '80%',
         height: 200,
+        aspectRatio: 1,
         borderRadius: 10,
         marginBottom: 20,
     },
