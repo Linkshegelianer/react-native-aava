@@ -15,7 +15,7 @@ export default function JobScreen() {
       }>
 
         <ThemedView style={styles.stepContainer}>
-            <SwipeableCards />
+              <SwipeableCards />
         </ThemedView>
 
     </ParallaxScrollView>

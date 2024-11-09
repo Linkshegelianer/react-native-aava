@@ -1,15 +1,15 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, PanResponder, Animated } from 'react-native';
 
 interface Person {
     name: string;
-    url: string;
+    url: any;
 }
 
 const data: Person[] = [
-    { name: 'Alice', url: 'https://www.lightroompresets.com/cdn/shop/articles/headshot_background_1024x.jpg?v=1653077312' },
-    { name: 'Bob', url: 'https://idsb.tmgrup.com.tr/ly/uploads/images/2023/11/14/301015.jpg' },
-    { name: 'Kate', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7Dg5cr-GGjkZQ7Zd5Av_GXDNsd9d6pS7LQHvcPx_U8iIm74omQTGsdL51eqpUkQHk3aM&usqp=CAU' },
+    { name: 'Alice', url: '../assets/images/itIsChristmas.png' },
+    { name: 'Bob', url: '../assets/images/itIsChristmas.png' },
+    { name: 'Kate', url: '../assets/images/itIsChristmas.png' },
 ];
 
 const SwipeableCards: React.FC = () => {
@@ -60,26 +60,34 @@ const SwipeableCards: React.FC = () => {
                             {...panResponder.panHandlers}
                         >
                             <Image source={{ uri: person.url }} style={styles.userLogo} />
-                            <View style={styles.nameHolder}>
-                                <Text style={styles.nameText}>{person.name}</Text>
-                            </View>
-                            <View style={styles.contactInfoContainer}>
-                                <View style={styles.contactInfo}>
-                                    <Text style={styles.contactText}>Google</Text>
+                            <View style={styles.infoBlock}>
+                                <View style={styles.mainText}>
+                                    <Text style={styles.occupation}>UX/UI Designer</Text>
+                                    <Text style={styles.name}>{person.name}</Text>
                                 </View>
-                                <View style={styles.contactInfo}>
-                                    <Text style={styles.contactText}>Location</Text>
-                                </View>
-                                <View style={styles.contactInfo}>
-                                    <Text style={styles.contactText}>1 day ago</Text>
+                                <View style={styles.contactInfoContainer}>
+                                    <View style={styles.contactInfo}>
+                                        <Image style={styles.skillIcon} source={require('../assets/images/galochka.png')} alt="galochka"/>
+                                        <Text style={styles.contactText}>3 years</Text>
+                                    </View>
+                                    <View style={styles.contactInfo}>
+                                        <Image style={styles.skillIcon} source={require('../assets/images/location.png')} alt="location"/>
+                                        <Text style={styles.contactText}>California</Text>
+                                    </View>
+                                    <View style={styles.contactInfo}>
+                                        <Image style={styles.skillIcon} source={require('../assets/images/calendar.png')} alt="calendar"/>
+                                        <Text style={styles.contactText}>1 day ago</Text>
+                                    </View>
                                 </View>
                             </View>
                             <View style={styles.skillsElement}>
-                                <Text style={styles.skillsTitle}>Skills</Text>
+                                <Text style={styles.skillsTitle}>Superpowers:</Text>
                                 <View style={styles.skillContainer}>
+                                    <Text style={styles.skillBlock}>Adobe XD</Text>
                                     <Text style={styles.skillBlock}>Figma</Text>
-                                    <Text style={styles.skillBlock}>Canva</Text>
-                                    <Text style={styles.skillBlock}>Kawabanga</Text>
+                                    <Text style={styles.skillBlock}>Sketch</Text>
+                                    <Text style={styles.skillBlock}>Remote-teams</Text>
+                                    <Text style={styles.skillBlock}>Problem-Solving</Text>
                                 </View>
                             </View>
                         </Animated.View>
@@ -140,6 +148,28 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginBottom: 20,
     },
+    infoBlock: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 'auto',
+    },
+    occupation: {
+        textAlign: 'center',
+        fontFamily: 'Roboto',
+        fontSize: 24,
+        fontWeight: 700,
+    },
+    mainText: {
+        marginBottom: 16,
+    },
+    name: {
+        textAlign: 'center',
+        fontFamily: 'Roboto',
+        fontSize: 20,
+        fontWeight: 400,
+    },
     nameHolder: {
         width: '100%',
         textAlign: 'center',
@@ -152,17 +182,28 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         width: '100%',
-        marginBottom: 20,
+        marginBottom: 48,
     },
     contactInfo: {
-        flexDirection: 'row',
+        display: "flex",
+        flexDirection: "row",
         alignItems: 'center',
         backgroundColor: '#f9e9ef',
         borderRadius: 20,
-        paddingVertical: 5,
-        paddingHorizontal: 10,
-        fontSize: 14,
+        paddingVertical: 6,
+        paddingHorizontal: 12,
+        fontSize: 18,
         color: '#333',
+    },
+    contactText: {
+        lineHeight: 16,
+        fontFamily: "Roboto",
+        fontSize: 16,
+    },
+    skillIcon: {
+        width: 18,
+        height: 18,
+        marginRight: 5,
     },
     contactIcon: {
         width: 16,
@@ -171,18 +212,19 @@ const styles = StyleSheet.create({
     },
     skillsElement: {
         width: '100%',
-        marginTop: 46,
         marginBottom: 20,
     },
     skillsTitle: {
         fontSize: 18,
+        fontFamily: 'Roboto',
+        fontWeight: 700,
         color: '#333',
-        marginBottom: 10,
+        marginBottom: 16,
     },
     skillContainer: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        gap: 10,
+        gap: 4,
     },
     skillBlock: {
         backgroundColor: '#fff',
@@ -192,6 +234,9 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#333',
         margin: 4,
+        lineHeight: 16,
+        fontFamily: "Roboto",
+        fontSize: 16,
     },
     description: {
         width: '80%',

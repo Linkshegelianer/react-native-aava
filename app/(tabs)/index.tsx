@@ -9,8 +9,8 @@ import {Image, Platform, StyleSheet} from "react-native";
 export default function ProfileScreen() {
     return (
         <ParallaxScrollView
-            headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-            headerImage={<Ionicons size={310} name="code-slash" style={styles.headerImage} />}>
+            headerBackgroundColor={{ light: '#E4E6FF', dark: '#E4E6FF' }}
+            headerImage={<Ionicons size={310} name="cloud-outline" style={styles.headerImage} />}>
             <ThemedView style={styles.titleContainer}>
                 <ThemedText type="title">Explore</ThemedText>
             </ThemedView>
