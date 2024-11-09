@@ -4,7 +4,7 @@ import {ThemedView} from '@/components/ThemedView';
 import SwipeableCards from '../../../components/SwipableCard';
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-export default function JobScreen() {
+export default function ApplicantJobScreen() {
   return (
       <ParallaxScrollView
           headerBackgroundColor={{ light: '#E4E6FF', dark: '#E4E6FF' }}

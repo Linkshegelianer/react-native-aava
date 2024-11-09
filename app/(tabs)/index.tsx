@@ -1,24 +1,48 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Text } from 'react-native';
+import { Tabs } from 'expo-router';
+import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+import { Colors } from '@/constants/Colors';
+import { useColorScheme } from '@/hooks/useColorScheme';
 
-import ApplicantProfileScreen from './applicant/home';
-import EmployeeProfileScreen from './employee/home';
-import EmployerProfileScreen from './employer/home';
+export default function Navigation() {
+    const colorScheme = useColorScheme();
 
-const Tab = createBottomTabNavigator();
-
-const Index = () => {
     return (
-        <NavigationContainer>
-            <Tab.Navigator>
-                <Tab.Screen name="Applicant" component={ApplicantProfileScreen} />
-                <Tab.Screen name="Employee" component={EmployeeProfileScreen} />
-                <Tab.Screen name="Employer" component={EmployerProfileScreen} />
-            </Tab.Navigator>
-        </NavigationContainer>
-    );
-};
+        <Tabs
+            screenOptions={{
+                tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+                headerShown: false,
+            }}
+        >
+            <Tabs.Screen
+                name="applicant/home"
+                options={{
+                    title: 'Applicant',
+                    tabBarIcon: ({ color, focused }) => (
+                        <TabBarIcon name={focused ? 'user' : 'user-outline'} color={color} />
+                    ),
+                }}
+            />
 
-export default Index;
+            <Tabs.Screen
+                name="employee/home"
+                options={{
+                    title: 'Employee',
+                    tabBarIcon: ({ color, focused }) => (
+                        <TabBarIcon name={focused ? 'briefcase' : 'briefcase-outline'} color={color} />
+                    ),
+                }}
+            />
+
+            <Tabs.Screen
+                name="employer/home"
+                options={{
+                    title: 'Employer',
+                    tabBarIcon: ({ color, focused }) => (
+                        <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+                    ),
+                }}
+            />
+        </Tabs>
+    );
+}

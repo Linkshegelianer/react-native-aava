@@ -1,42 +1,52 @@
-import {Image, StyleSheet} from 'react-native';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import {ThemedView} from '@/components/ThemedView';
-import SwipeableCards from '../../../components/SwipableCard';
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { Tabs } from 'expo-router';
+import React from 'react';
 
-export default function JobScreen() {
+import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+import { Colors } from '@/constants/Colors';
+import { useColorScheme } from '@/hooks/useColorScheme';
+
+export default function TabLayout() {
+  const colorScheme = useColorScheme();
+
   return (
-      <ParallaxScrollView
-          headerBackgroundColor={{ light: '#E4E6FF', dark: '#E4E6FF' }}
-          headerImage={<Ionicons size={310} name="cloud-outline" style={styles.headerImage} />}>
-        <ThemedView style={styles.stepContainer}>
-              <SwipeableCards />
-        </ThemedView>
-    </ParallaxScrollView>
+      <Tabs
+          screenOptions={{
+            tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+            headerShown: false, // Отключаем заголовок на уровне табов
+          }}
+      >
+        {/* Экран Job */}
+        <Tabs.Screen
+            name="applicant/job"
+            options={{
+              title: 'Job',
+              tabBarIcon: ({ color, focused }) => (
+                  <TabBarIcon name={focused ? 'briefcase' : 'briefcase-outline'} color={color} />
+              ),
+            }}
+        />
+
+        {/* Экран Messages */}
+        <Tabs.Screen
+            name="applicant/messages"
+            options={{
+              title: 'Messages',
+              tabBarIcon: ({ color, focused }) => (
+                  <TabBarIcon name={focused ? 'mail' : 'mail-outline'} color={color} />
+              ),
+            }}
+        />
+
+        {/* Экран Home */}
+        <Tabs.Screen
+            name="applicant/home"
+            options={{
+              title: 'Home',
+              tabBarIcon: ({ color, focused }) => (
+                  <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+              ),
+            }}
+        />
+      </Tabs>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  headerImage: {
-    color: '#8181F5',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
