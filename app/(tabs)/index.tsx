@@ -3,9 +3,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text } from 'react-native';
 
-import ApplicantProfileScreen from './applicant/Home';
-import EmployeeProfileScreen from './employee/Home';
-import EmployerProfileScreen from './employer/Home';
+import ApplicantProfileScreen from './applicant/home';
+import EmployeeProfileScreen from './employee/home';
+import EmployerProfileScreen from './employer/home';
 
 const Tab = createBottomTabNavigator();
 
