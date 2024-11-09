@@ -5,11 +5,11 @@ import React, {ReactNode} from "react";
 
 interface ProfileSectionProps {
     title: string;
-    content: string;
+    content?: string;
     children?: ReactNode;
 }
 
-const OrdinaryProfileSection = ({ title, content, children }: ProfileSectionProps) => {
+const ProfileSection = ({ title, content, children }: ProfileSectionProps) => {
     return (
         <View style={styles.container}>
             <ThemedText style={[styles.title, { marginBottom: 5 }]}>{title}</ThemedText>
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default OrdinaryProfileSection;
+export default ProfileSection;

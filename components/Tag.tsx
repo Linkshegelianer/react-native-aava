@@ -27,18 +27,18 @@ const styles = StyleSheet.create({
     tag: {
         paddingVertical: 4,
         paddingHorizontal: 8,
-        borderRadius: 4,
+        borderRadius: 15,
         alignSelf: "flex-start",
     },
     text: {
-        color: "#fff",
         fontSize: 14,
     },
     job: {
-        backgroundColor: "#007bff",
+        backgroundColor: "#E4E6FF",
     },
     skill: {
-        backgroundColor: "#6c757d",
+        backgroundColor: "#E4E6FF",
+        color: "#000",
     },
 });
 
