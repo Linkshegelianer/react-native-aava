@@ -4,7 +4,7 @@ import {FontAwesome} from "@expo/vector-icons";
 
 interface TagProps {
     text: string;
-    type: "jobTag" | "skillTag";
+    type: "jobTag" | "skillTag" | "red" | "rose" | "green";
     icon?: React.ComponentProps<typeof FontAwesome>['name'];
     style?: object;
 }
@@ -16,6 +16,12 @@ const Tag = ({ text, type, icon, style }: TagProps) => {
                 return styles.job;
             case "skillTag":
                 return styles.skill;
+            case "red":
+                return styles.red;
+            case "rose":
+                return styles.rose;
+            case "green":
+                return styles.green;
         }
     };
 
@@ -42,7 +48,18 @@ const styles = StyleSheet.create({
     job: {
         backgroundColor: "#FFFFFF",
         color: "#0D0140",
-
+    },
+    red: {
+        backgroundColor: "#F8EDD8",
+        color: "#000",
+    },
+    green: {
+        backgroundColor: "#ECFEE3",
+        color: "#000",
+    },
+    rose: {
+        backgroundColor: "#F9E9EF",
+        color: "#000",
     },
     skill: {
         backgroundColor: "#E4E6FF",

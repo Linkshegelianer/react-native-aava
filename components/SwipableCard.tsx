@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, PanResponder, Animated } from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, Image, StyleSheet, PanResponder, Animated} from 'react-native';
 import Tag from "@/components/Tag";
 
 interface Company {
@@ -8,15 +8,9 @@ interface Company {
 }
 
 const companies: Company[] = [
-    { legalName: 'Google', url: '../assets/images/jobs/google-logo.png' },
-    { legalName: 'Oracle', url: '../assets/images/jobs/oracle-logo.png' },
-    { legalName: 'Aava', url: '../assets/images/jobs/aava-logo.png' },
-];
-
-const tags = [
-    { icon: 'clock-o', text: '3 years' },
-    { icon: 'map-marker', text: 'California' },
-    { icon: 'calendar', text: '1 day ago' },
+    {legalName: 'Google', url: '../assets/images/jobs/google-logo.png'},
+    {legalName: 'Oracle', url: '../assets/images/jobs/oracle-logo.png'},
+    {legalName: 'Aava', url: '../assets/images/jobs/aava-logo.png'},
 ];
 
 const SwipeableCards: React.FC = () => {
@@ -27,12 +21,12 @@ const SwipeableCards: React.FC = () => {
         if (direction === 'Left' || direction === 'Right') {
             setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, companies.length - 1));
         }
-        Animated.spring(position, { toValue: { x: 0, y: 0 }, useNativeDriver: false }).start();
+        Animated.spring(position, {toValue: {x: 0, y: 0}, useNativeDriver: false}).start();
     };
 
     const panResponder = PanResponder.create({
         onStartShouldSetPanResponder: () => true,
-        onPanResponderMove: Animated.event([null, { dx: position.x, dy: position.y }], {
+        onPanResponderMove: Animated.event([null, {dx: position.x, dy: position.y}], {
             useNativeDriver: false,
         }),
         onPanResponderRelease: (_, gestureState) => {
@@ -42,10 +36,10 @@ const SwipeableCards: React.FC = () => {
                 handleSwipe('Left');
             } else if (gestureState.dy < -100) {
                 // Скролл вверх
-                Animated.spring(position, { toValue: { x: 0, y: 0 }, useNativeDriver: false }).start();
+                Animated.spring(position, {toValue: {x: 0, y: 0}, useNativeDriver: false}).start();
                 // Замените на ScrollView, чтобы поддержать вертикальную прокрутку, если требуется.
             } else {
-                Animated.spring(position, { toValue: { x: 0, y: 0 }, useNativeDriver: false }).start();
+                Animated.spring(position, {toValue: {x: 0, y: 0}, useNativeDriver: false}).start();
             }
         },
     });
@@ -59,22 +53,28 @@ const SwipeableCards: React.FC = () => {
                             key={person.legalName}
                             style={[styles.card, {
                                 transform: [
-                                    { translateX: position.x },
-                                    { translateY: position.y },
-                                    { rotate: position.x.interpolate({ inputRange: [-200, 200], outputRange: ['-15deg', '15deg'] }) }
+                                    {translateX: position.x},
+                                    {translateY: position.y},
+                                    {
+                                        rotate: position.x.interpolate({
+                                            inputRange: [-200, 200],
+                                            outputRange: ['-15deg', '15deg']
+                                        })
+                                    }
                                 ]
                             }]}
                             {...panResponder.panHandlers}
                         >
-                            <Image source={{ uri: person.url }} style={styles.userLogo} />
+                            <Image source={{uri: person.url}} style={styles.userLogo}/>
                             <View style={styles.infoBlock}>
                                 <View style={styles.mainText}>
                                     <Text style={styles.occupation}>UX/UI Designer</Text>
                                     <Text style={styles.name}>{person.legalName}</Text>
                                 </View>
                                 <View style={styles.contactInfoContainer}>
-                                    {tags.map((skill, index) => (
-                                        <Tag key={index} text={skill.text} type="jobTag" icon={skill.icon} style={{ marginTop: -10 }}/>                                    ))}
+                                    <Tag key={0} text="3 years" type="red" icon="clock-o" style={{marginTop: -10}}/>
+                                    <Tag key={1} text="California" type="green" icon="map-marker" style={{marginTop: -10}}/>
+                                    <Tag key={2} text="1 day ago" type="rose" icon="calendar" style={{marginTop: -10}}/>
                                 </View>
                             </View>
                         </Animated.View>
@@ -91,8 +91,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    cardElement: {
-    },
+    cardElement: {},
     cardContainer: {
         maxWidth: 500,
         display: 'flex',
@@ -110,7 +109,7 @@ const styles = StyleSheet.create({
         maxWidth: 400,
         borderRadius: 20,
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 8 },
+        shadowOffset: {width: 0, height: 8},
         shadowOpacity: 0.15,
         shadowRadius: 20,
         backgroundColor: '#e4e6ff',
@@ -119,7 +118,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        transform: [{ rotate: '0deg' }], // задаем по умолчанию для анимации
+        transform: [{rotate: '0deg'}], // задаем по умолчанию для анимации
     },
     userLogo: {
         width: '80%',
@@ -127,9 +126,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginBottom: 20,
     },
-    infoBlock: {
-
-    },
+    infoBlock: {},
     occupation: {
         textAlign: 'center',
         fontSize: 24,
@@ -143,9 +140,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 400,
     },
-    nameHolder: {
-
-    },
+    nameHolder: {},
     contactInfoContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -214,11 +209,11 @@ const styles = StyleSheet.create({
         marginTop: 25,
     },
     swipeLeft: {
-        transform: [{ translateX: -100 }, { rotate: '-15deg' }],
+        transform: [{translateX: -100}, {rotate: '-15deg'}],
         opacity: 0.2,
     },
     swipeRight: {
-        transform: [{ translateX: 100 }, { rotate: '15deg' }],
+        transform: [{translateX: 100}, {rotate: '15deg'}],
         opacity: 0.2,
     },
 });
