@@ -17,9 +17,8 @@ const dummyData = [
 export default function MessagesScreen() {
   return (
       <ParallaxScrollView
-          headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-          headerImage={<Ionicons size={310} name="chatbubble-ellipses-outline" style={styles.headerImage} />}
-      >
+          headerBackgroundColor={{ light: '#E4E6FF', dark: '#E4E6FF' }}
+          headerImage={<Ionicons size={310} name="cloud-outline" style={styles.headerImage} />}>
         <ThemedView style={styles.titleContainer}>
           <ThemedText type="title">Messages</ThemedText>
         </ThemedView>
@@ -43,7 +42,7 @@ export default function MessagesScreen() {
 
 const styles = StyleSheet.create({
   headerImage: {
-    color: '#808080',
+    color: '#8181F5',
     bottom: -90,
     left: -35,
     position: 'absolute',

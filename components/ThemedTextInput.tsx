@@ -18,10 +18,11 @@ export default function ThemedTextInput({ style, ...props }: { style?: ViewStyle
 const styles = StyleSheet.create({
     input: {
         padding: 10,
-        borderRadius: 5,
+        borderWidth: 0,
+        borderRadius: 20,
         fontSize: 16,
-        borderWidth: 1,
         borderColor: '#ccc',
+        paddingLeft: 20,
     },
     lightInput: {
         backgroundColor: '#f0f0f0',
