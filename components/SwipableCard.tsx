@@ -6,15 +6,19 @@ import TagSection from "@/components/TagSection";
 interface Company {
     legalName: string;
     url: any;
-}
-
-interface SwipeableCardProps {
-    companies: Company[];
+    vacancyName: string;
+    experience: string; // For the "red" tag
+    location: string;   // For the "green" tag
+    postedTime: string; // For the "rose" tag
     superpowerTags: { text: string }[];
     prioritiesTags: { text: string }[];
 }
 
-const SwipeableCard: React.FC<SwipeableCardProps> = ({companies, superpowerTags, prioritiesTags}) => {
+interface SwipeableCardProps {
+    companies: Company[];
+}
+
+const SwipeableCard: React.FC<SwipeableCardProps> = ({ companies}) => {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [position] = useState(new Animated.ValueXY());
 
@@ -22,12 +26,12 @@ const SwipeableCard: React.FC<SwipeableCardProps> = ({companies, superpowerTags,
         if (direction === 'Left' || direction === 'Right') {
             setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, companies.length - 1));
         }
-        Animated.spring(position, {toValue: {x: 0, y: 0}, useNativeDriver: false}).start();
+        Animated.spring(position, { toValue: { x: 0, y: 0 }, useNativeDriver: false }).start();
     };
 
     const panResponder = PanResponder.create({
         onStartShouldSetPanResponder: () => true,
-        onPanResponderMove: Animated.event([null, {dx: position.x, dy: position.y}], {
+        onPanResponderMove: Animated.event([null, { dx: position.x, dy: position.y }], {
             useNativeDriver: false,
         }),
         onPanResponderRelease: (_, gestureState) => {
@@ -36,7 +40,7 @@ const SwipeableCard: React.FC<SwipeableCardProps> = ({companies, superpowerTags,
             } else if (gestureState.dx < -100) {
                 handleSwipe('Left');
             } else {
-                Animated.spring(position, {toValue: {x: 0, y: 0}, useNativeDriver: false}).start();
+                Animated.spring(position, { toValue: { x: 0, y: 0 }, useNativeDriver: false }).start();
             }
         },
     });
@@ -44,14 +48,14 @@ const SwipeableCard: React.FC<SwipeableCardProps> = ({companies, superpowerTags,
     return (
         <View style={styles.container}>
             <View style={styles.cardContainer}>
-                {companies.map((person, index) =>
+                {companies.map((company, index) =>
                         index === currentIndex && (
                             <Animated.View
-                                key={person.legalName}
+                                key={company.legalName}
                                 style={[styles.card, {
                                     transform: [
-                                        {translateX: position.x},
-                                        {translateY: position.y},
+                                        { translateX: position.x },
+                                        { translateY: position.y },
                                         {
                                             rotate: position.x.interpolate({
                                                 inputRange: [-200, 200],
@@ -62,21 +66,22 @@ const SwipeableCard: React.FC<SwipeableCardProps> = ({companies, superpowerTags,
                                 }]}
                                 {...panResponder.panHandlers}
                             >
-                                <Image source={{uri: person.url}} style={styles.userLogo}/>
+                                <Image source={{ uri: company.url }} style={styles.userLogo} />
                                 <View style={styles.infoBlock}>
                                     <View style={styles.mainText}>
-                                        <Text style={styles.occupation}>UX/UI Designer</Text>
-                                        <Text style={styles.name}>{person.legalName}</Text>
+                                        <Text style={styles.occupation}>{company.vacancyName}</Text>
+                                        <Text style={styles.name}>{company.legalName}</Text>
+                                        <Image source={require('@/assets/images/jobs/rating.png')} style={{ marginTop: 5, alignSelf: 'center', transform: [{ scale: 0.8 }] }} />
                                     </View>
                                     <View style={styles.contactInfoContainer}>
-                                        <Tag key={0} text="3 years" type="red" icon="clock-o" style={{marginTop: -10}}/>
-                                        <Tag key={1} text="California" type="green" icon="map-marker" style={{marginTop: -10}}/>
-                                        <Tag key={2} text="1 day ago" type="rose" icon="calendar" style={{marginTop: -10}}/>
+                                        <Tag key={0} text={company.experience} type="red" icon="clock-o" style={{ marginTop: -10 }} />
+                                        <Tag key={1} text={company.location} type="green" icon="map-marker" style={{ marginTop: -10 }} />
+                                        <Tag key={2} text={company.postedTime} type="rose" icon="calendar" style={{ marginTop: -10 }} />
                                     </View>
                                 </View>
-                                <View style={{gap: 15}}>
-                                    <TagSection text="Superpowers" tags={superpowerTags}/>
-                                    <TagSection text="Priorities" tags={prioritiesTags}/>
+                                <View style={{ gap: 15 }}>
+                                    <TagSection text="Superpowers" tags={company.superpowerTags} />
+                                    <TagSection text="Priorities" tags={company.prioritiesTags} />
                                 </View>
                             </Animated.View>
                         )
@@ -91,6 +96,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        marginTop: 20,
+        marginBottom: 20,
     },
     cardContainer: {
         maxWidth: 500,
@@ -110,9 +117,8 @@ const styles = StyleSheet.create({
     },
     userLogo: {
         width: '80%',
-        height: 200,
-        borderRadius: 10,
-        marginBottom: 20,
+        height: 140,
+        maxWidth: 195,
     },
     infoBlock: {},
     occupation: {
