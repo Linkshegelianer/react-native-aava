@@ -96,6 +96,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        marginTop: 20,
+        marginBottom: 20,
     },
     cardContainer: {
         maxWidth: 500,
@@ -115,10 +117,8 @@ const styles = StyleSheet.create({
     },
     userLogo: {
         width: '80%',
-        height: 200,
+        height: 140,
         maxWidth: 195,
-        borderRadius: 10,
-        marginBottom: 20,
     },
     infoBlock: {},
     occupation: {
