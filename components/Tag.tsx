@@ -1,10 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import {FontAwesome} from "@expo/vector-icons";
 
 interface TagProps {
     text: string;
     type: "jobTag" | "skillTag";
-    icon?: string;
+    icon?: React.ComponentProps<typeof FontAwesome>['name'];
     style?: object;
 }
 
@@ -20,7 +21,7 @@ const Tag = ({ text, type, icon, style }: TagProps) => {
 
     return (
         <View style={[styles.tag, getTagStyle(), style]}>
-            {icon && <Image style={styles.skillIcon} source={{ uri: icon }} />}
+            {icon && <FontAwesome name={icon} style={styles.skillIcon} />}
             <Text style={styles.text}>{text}</Text>
         </View>
     );
@@ -48,8 +49,6 @@ const styles = StyleSheet.create({
         color: "#000",
     },
     skillIcon: {
-        width: 18,
-        height: 18,
         marginRight: 5,
     },
 });

@@ -13,10 +13,10 @@ const companies: Company[] = [
     { legalName: 'Aava', url: '../assets/images/jobs/aava-logo.png' },
 ];
 
-const dummyAssets = [
-    { icon: require('../assets/images/galochka.png'), text: '3 years' },
-    { icon: require('../assets/images/location.png'), text: 'California' },
-    { icon: require('../assets/images/calendar.png'), text: '1 day ago' },
+const tags = [
+    { icon: 'info', text: '3 years' },
+    { icon: 'book', text: 'California' },
+    { icon: 'anchor', text: '1 day ago' },
 ];
 
 const SwipeableCards: React.FC = () => {
@@ -73,16 +73,13 @@ const SwipeableCards: React.FC = () => {
                                     <Text style={styles.name}>{person.legalName}</Text>
                                 </View>
                                 <View style={styles.contactInfoContainer}>
-                                    {dummyAssets.map((skill, index) => (
+                                    {tags.map((skill, index) => (
                                         <Tag key={index} text={skill.text} type="jobTag" icon={skill.icon} style={{ marginTop: -10 }}/>                                    ))}
                                 </View>
                             </View>
                         </Animated.View>
                     )
                 ))}
-            </View>
-            <View style={styles.description}>
-                <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dictum malesuada dui...</Text>
             </View>
         </View>
     );
