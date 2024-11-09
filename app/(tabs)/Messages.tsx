@@ -16,7 +16,7 @@ export default function MessagesScreen() {
           <ThemedText type="title">Messages</ThemedText>
         </ThemedView>
         <ThemedView>
-          <ThemedTextInput placeholder="Search messages" style={styles.searchInput} />
+          <ThemedTextInput placeholder="Search message" style={styles.searchInput} />
         </ThemedView>
         <ThemedView >
           <DummyDialog title="Conversation 1" lastMessage="Hello, how are you?" />
