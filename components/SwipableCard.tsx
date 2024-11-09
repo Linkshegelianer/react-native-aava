@@ -10,15 +10,15 @@ interface Company {
     experience: string; // For the "red" tag
     location: string;   // For the "green" tag
     postedTime: string; // For the "rose" tag
-}
-
-interface SwipeableCardProps {
-    companies: Company[];
     superpowerTags: { text: string }[];
     prioritiesTags: { text: string }[];
 }
 
-const SwipeableCard: React.FC<SwipeableCardProps> = ({ companies, superpowerTags, prioritiesTags }) => {
+interface SwipeableCardProps {
+    companies: Company[];
+}
+
+const SwipeableCard: React.FC<SwipeableCardProps> = ({ companies}) => {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [position] = useState(new Animated.ValueXY());
 
@@ -48,10 +48,10 @@ const SwipeableCard: React.FC<SwipeableCardProps> = ({ companies, superpowerTags
     return (
         <View style={styles.container}>
             <View style={styles.cardContainer}>
-                {companies.map((person, index) =>
+                {companies.map((company, index) =>
                         index === currentIndex && (
                             <Animated.View
-                                key={person.legalName}
+                                key={company.legalName}
                                 style={[styles.card, {
                                     transform: [
                                         { translateX: position.x },
@@ -66,22 +66,22 @@ const SwipeableCard: React.FC<SwipeableCardProps> = ({ companies, superpowerTags
                                 }]}
                                 {...panResponder.panHandlers}
                             >
-                                <Image source={{ uri: person.url }} style={styles.userLogo} />
+                                <Image source={{ uri: company.url }} style={styles.userLogo} />
                                 <View style={styles.infoBlock}>
                                     <View style={styles.mainText}>
-                                        <Text style={styles.occupation}>{person.vacancyName}</Text>
-                                        <Text style={styles.name}>{person.legalName}</Text>
+                                        <Text style={styles.occupation}>{company.vacancyName}</Text>
+                                        <Text style={styles.name}>{company.legalName}</Text>
                                         <Image source={require('@/assets/images/jobs/rating.png')} style={{ marginTop: 5, alignSelf: 'center', transform: [{ scale: 0.8 }] }} />
                                     </View>
                                     <View style={styles.contactInfoContainer}>
-                                        <Tag key={0} text={person.experience} type="red" icon="clock-o" style={{ marginTop: -10 }} />
-                                        <Tag key={1} text={person.location} type="green" icon="map-marker" style={{ marginTop: -10 }} />
-                                        <Tag key={2} text={person.postedTime} type="rose" icon="calendar" style={{ marginTop: -10 }} />
+                                        <Tag key={0} text={company.experience} type="red" icon="clock-o" style={{ marginTop: -10 }} />
+                                        <Tag key={1} text={company.location} type="green" icon="map-marker" style={{ marginTop: -10 }} />
+                                        <Tag key={2} text={company.postedTime} type="rose" icon="calendar" style={{ marginTop: -10 }} />
                                     </View>
                                 </View>
                                 <View style={{ gap: 15 }}>
-                                    <TagSection text="Superpowers" tags={superpowerTags} />
-                                    <TagSection text="Priorities" tags={prioritiesTags} />
+                                    <TagSection text="Superpowers" tags={company.superpowerTags} />
+                                    <TagSection text="Priorities" tags={company.prioritiesTags} />
                                 </View>
                             </Animated.View>
                         )
