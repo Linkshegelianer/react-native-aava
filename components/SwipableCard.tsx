@@ -6,10 +6,16 @@ interface Person {
     url: any;
 }
 
-const data: Person[] = [
-    { name: 'Alice', url: '../assets/images/itIsChristmas.png' },
-    { name: 'Bob', url: '../assets/images/itIsChristmas.png' },
-    { name: 'Kate', url: '../assets/images/itIsChristmas.png' },
+const companies: Person[] = [
+    { name: 'Google', url: '../assets/images/jobs/google-logo.png' },
+    { name: 'Oracle', url: '../assets/images/jobs/oracle-logo.png' },
+    { name: 'Aava', url: '../assets/images/jobs/aava-logo.png' },
+];
+
+const dummyAssets = [
+    { icon: require('../assets/images/galochka.png'), text: '3 years' },
+    { icon: require('../assets/images/location.png'), text: 'California' },
+    { icon: require('../assets/images/calendar.png'), text: '1 day ago' },
 ];
 
 const SwipeableCards: React.FC = () => {
@@ -18,7 +24,7 @@ const SwipeableCards: React.FC = () => {
 
     const handleSwipe = (direction: string) => {
         if (direction === 'Left' || direction === 'Right') {
-            setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, data.length - 1));
+            setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, companies.length - 1));
         }
         Animated.spring(position, { toValue: { x: 0, y: 0 }, useNativeDriver: false }).start();
     };
@@ -46,7 +52,7 @@ const SwipeableCards: React.FC = () => {
     return (
         <View style={styles.container}>
             <View style={styles.cardContainer}>
-                {data.map((person, index) => (
+                {companies.map((person, index) => (
                     index === currentIndex && (
                         <Animated.View
                             key={person.name}
@@ -66,18 +72,12 @@ const SwipeableCards: React.FC = () => {
                                     <Text style={styles.name}>{person.name}</Text>
                                 </View>
                                 <View style={styles.contactInfoContainer}>
-                                    <View style={styles.contactInfo}>
-                                        <Image style={styles.skillIcon} source={require('../assets/images/galochka.png')} alt="galochka"/>
-                                        <Text style={styles.contactText}>3 years</Text>
-                                    </View>
-                                    <View style={styles.contactInfo}>
-                                        <Image style={styles.skillIcon} source={require('../assets/images/location.png')} alt="location"/>
-                                        <Text style={styles.contactText}>California</Text>
-                                    </View>
-                                    <View style={styles.contactInfo}>
-                                        <Image style={styles.skillIcon} source={require('../assets/images/calendar.png')} alt="calendar"/>
-                                        <Text style={styles.contactText}>1 day ago</Text>
-                                    </View>
+                                    {dummyAssets.map((asset, index) => (
+                                        <View key={index} style={styles.contactInfo}>
+                                            <Image style={styles.skillIcon} source={asset.icon} alt={asset.text} />
+                                            <Text style={styles.contactText}>{asset.text}</Text>
+                                        </View>
+                                    ))}
                                 </View>
                             </View>
                             <View style={styles.skillsElement}>
