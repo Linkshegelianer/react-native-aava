@@ -2,7 +2,7 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
-import {StyleSheet, View, Text} from "react-native";
+import {StyleSheet, View, Text, Image} from "react-native";
 import ProfileSection from "@/components/ProfileSection";
 import CollapsibleProfileSection from "@/components/CollapsibleProfileSection";
 import ProfileSectionEntry from "@/components/ProfileSectionEntry";
@@ -47,16 +47,25 @@ const educationData = [
 
 const skills = ["Adobe XD", "Figma", "Sketch", "Remote-teams", "Problem-solving"];
 
+const video = '../assets/images/jobs/google-logo.png';
+
 export default function ProfileScreen() {
     return (
         <ParallaxScrollView
             headerBackgroundColor={{light: '#E4E6FF', dark: '#E4E6FF'}}
             headerImage={<Ionicons size={310} name="cloud-outline" style={styles.headerImage}/>}>
-            <ThemedView>
+            <ThemedView style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                 <ThemedText style={styles.title} type="title">Hello, Orlando!</ThemedText>
+                <View style={{ flexDirection: 'row', gap: 10 }}>
+                    <FontAwesome name="bell" size={18} color="gray" />
+                    <FontAwesome name="cog" size={18} color="gray" />
+                </View>
             </ThemedView>
             <ProfileSection title="About me"
                             content="I’m a UI/UX designer passionate about creating meaningful, user-centered experiences that seamlessly blend functionality with aesthetics. My approach to design is rooted in empathy, aiming to understand and anticipate users' needs to make digital interactions as intuitive and enjoyable as possible."/>
+            <ProfileSection title="Video CV"
+                            children={
+                                <Image source={require('@/assets/images/profile/video-cv.png')} style={{ borderRadius: 10, alignSelf: 'center', width: 300, height: 150, marginTop: 10 }} />                            } />
             <CollapsibleProfileSection title="Work experience" content="">
                 {workExperienceData.map((entry, index) => (
                     <View key={index} style={{marginBottom: 5}}>

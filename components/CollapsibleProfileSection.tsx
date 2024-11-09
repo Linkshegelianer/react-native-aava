@@ -17,7 +17,7 @@ const CollapsibleProfileSection = ({ title, content, children }: ProfileSectionP
                 {children}
             </Collapsible>
             <TouchableOpacity style={styles.editIcon}>
-                <Ionicons name="pencil" size={20} color="#333" />
+                <Ionicons name="pencil" size={20} color="gray" />
             </TouchableOpacity>
         </View>
     );

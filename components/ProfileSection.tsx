@@ -16,7 +16,7 @@ const ProfileSection = ({ title, content, children }: ProfileSectionProps) => {
             <ThemedText>{content}</ThemedText>
             {children}
             <TouchableOpacity style={styles.editIcon}>
-                <Ionicons name="pencil" size={20} color="#333" />
+                <Ionicons name="pencil" size={20} color="gray" />
             </TouchableOpacity>
         </View>
     );
