@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, Image, StyleSheet, PanResponder, Animated} from 'react-native';
 import Tag from "@/components/Tag";
+import TagSection from "@/components/TagSection";
 
 interface Company {
     legalName: string;
@@ -12,6 +13,10 @@ const companies: Company[] = [
     {legalName: 'Oracle', url: '../assets/images/jobs/oracle-logo.png'},
     {legalName: 'Aava', url: '../assets/images/jobs/aava-logo.png'},
 ];
+
+const superpowerTags = [{text: "Adobe XD"}, {text: "Figma"}, {text: "Scetch"}, {text: "Remote-teams"}];
+
+const prioritiesTags = [{text: "Remote"}, {text: "Hybrid"}, {text: "Flexible hours"}];
 
 const SwipeableCards: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -73,9 +78,14 @@ const SwipeableCards: React.FC = () => {
                                 </View>
                                 <View style={styles.contactInfoContainer}>
                                     <Tag key={0} text="3 years" type="red" icon="clock-o" style={{marginTop: -10}}/>
-                                    <Tag key={1} text="California" type="green" icon="map-marker" style={{marginTop: -10}}/>
+                                    <Tag key={1} text="California" type="green" icon="map-marker"
+                                         style={{marginTop: -10}}/>
                                     <Tag key={2} text="1 day ago" type="rose" icon="calendar" style={{marginTop: -10}}/>
                                 </View>
+                            </View>
+                            <View style={{ gap: 15 }}>
+                                <TagSection text="Superpowers" tags={superpowerTags} />
+                                <TagSection text="Priorities" tags={prioritiesTags} />
                             </View>
                         </Animated.View>
                     )
@@ -144,7 +154,7 @@ const styles = StyleSheet.create({
     contactInfoContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        marginBottom: 48,
+        marginBottom: 25,
         gap: 3,
     },
     contactInfo: {

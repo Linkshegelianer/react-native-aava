@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 14,
+        marginBottom: 2,
     },
     job: {
         backgroundColor: "#FFFFFF",
