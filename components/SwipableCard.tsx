@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f0f0f0',
     },
     cardElement: {
         marginTop: 35,
@@ -114,7 +113,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     cardContainer: {
-        width: '80%',
+        width: '100%',
         maxWidth: 500,
         display: 'flex',
         justifyContent: 'center',
@@ -239,12 +238,14 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     description: {
-        width: '80%',
+        width: '100%',
         color: '#333',
         fontSize: 14,
         textAlign: 'justify',
         lineHeight: 20,
         marginTop: 25,
+        alignSelf: "center",
+        alignItems: "center",
     },
     swipeLeft: {
         transform: [{ translateX: -100 }, { rotate: '-15deg' }],
