@@ -1,48 +1,38 @@
+// app/(tabs)/index.tsx
 import React from 'react';
-import { Tabs } from 'expo-router';
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { View, Text, Button } from 'react-native';
 
 export default function Navigation() {
-    const colorScheme = useColorScheme();
-
     return (
-        <Tabs
-            screenOptions={{
-                tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-                headerShown: false,
-            }}
-        >
-            <Tabs.Screen
-                name="applicant/home"
-                options={{
-                    title: 'Applicant',
-                    tabBarIcon: ({ color, focused }) => (
-                        <TabBarIcon name={focused ? 'user' : 'user-outline'} color={color} />
-                    ),
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Select a Profile</Text>
+
+            {/* Кнопка для перехода в "Applicant" */}
+            <Button
+                title="Applicant"
+                onPress={() => {
+                    // Переход на домашнюю страницу для applicant
+                    window.location.href = '/applicant/home';
                 }}
             />
 
-            <Tabs.Screen
-                name="employee/home"
-                options={{
-                    title: 'Employee',
-                    tabBarIcon: ({ color, focused }) => (
-                        <TabBarIcon name={focused ? 'briefcase' : 'briefcase-outline'} color={color} />
-                    ),
+            {/* Кнопка для перехода в "Employee" */}
+            <Button
+                title="Employee"
+                onPress={() => {
+                    // Переход на домашнюю страницу для employee
+                    window.location.href = '/employee/home';
                 }}
             />
 
-            <Tabs.Screen
-                name="employer/home"
-                options={{
-                    title: 'Employer',
-                    tabBarIcon: ({ color, focused }) => (
-                        <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-                    ),
+            {/* Кнопка для перехода в "Employer" */}
+            <Button
+                title="Employer"
+                onPress={() => {
+                    // Переход на домашнюю страницу для employer
+                    window.location.href = '/employer/home';
                 }}
             />
-        </Tabs>
+        </View>
     );
 }

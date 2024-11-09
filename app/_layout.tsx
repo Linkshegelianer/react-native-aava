@@ -33,7 +33,7 @@ export default function RootLayout() {
             }}
         >
           {/* Корневой стек */}
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            {/*<Stack.Screen name="(tabs)" options={{ headerShown: false }} />*/}
           <Stack.Screen name="+not-found" options={{ title: 'Not Found' }} />
         </Stack>
       </ThemeProvider>
