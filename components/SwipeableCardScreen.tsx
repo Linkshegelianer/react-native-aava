@@ -1,5 +1,6 @@
 import SwipeableCard from "@/components/SwipableCard";
-import {View, StyleSheet} from "react-native";
+import {View, StyleSheet, Text} from "react-native";
+import {FontAwesome} from "@expo/vector-icons";
 
 const superpowerTagsGoogle = [{text: "Adobe XD"}, {text: "Figma"}, {text: "Sketch"}, {text: "Remote-teams"}];
 const prioritiesTagsGoogle = [{text: "Remote"}, {text: "Hybrid"}, {text: "Flexible hours"}];
@@ -46,7 +47,15 @@ const companies = [
 const SwipeableCardScreen: React.FC = () => {
     return (
         <View style={styles.screenContainer}>
-            <SwipeableCard companies={companies}/>
+            <SwipeableCard companies={companies} />
+            <View style={styles.buttonContainer}>
+                <View style={[styles.circleButton, { backgroundColor: '#F58183' }]}>
+                    <FontAwesome name="times" size={24} color="#fff" />
+                </View>
+                <View style={[styles.circleButton, { backgroundColor: '#8181F5' }]}>
+                    <FontAwesome name="heart" size={24} color="#fff" />
+                </View>
+            </View>
         </View>
     );
 };
@@ -56,6 +65,24 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        width: '100%',
+        marginTop: 10,
+    },
+    circleButton: {
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    buttonText: {
+        color: '#fff',
+        fontSize: 24,
+        fontWeight: 'bold',
     },
 });
 
