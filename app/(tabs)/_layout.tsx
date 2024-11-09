@@ -15,18 +15,18 @@ export default function TabLayout() {
                 headerShown: false,
             }}>
             <Tabs.Screen
-                name="profile"
+                name="job"
                 options={{
-                    title: 'Profile',
+                    title: 'Job',
                     tabBarIcon: ({color, focused}) => (
                         <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color}/>
                     ),
                 }}
             />
             <Tabs.Screen
-                name="job"
+                name="profile"
                 options={{
-                    title: 'Job',
+                    title: 'Profile',
                     tabBarIcon: ({color, focused}) => (
                         <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color}/>
                     ),
@@ -35,7 +35,7 @@ export default function TabLayout() {
             <Tabs.Screen
                 name="messages"
                 options={{
-                    title: 'messages',
+                    title: 'Messages',
                     tabBarIcon: ({color, focused}) => (
                         <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color}/>
                     ),
