@@ -3,7 +3,7 @@ import {View, Text, Image, StyleSheet, PanResponder, Animated} from 'react-nativ
 import Tag from "@/components/Tag";
 import TagSection from "@/components/TagSection";
 
-interface Company {
+interface Entity {
     legalName: string;
     url: any;
     vacancyName: string;
@@ -15,16 +15,17 @@ interface Company {
 }
 
 interface SwipeableCardProps {
-    companies: Company[];
+    entities: Entity[];
+    showRating: boolean;
 }
 
-const SwipeableCard: React.FC<SwipeableCardProps> = ({ companies}) => {
+const SwipeableCard: React.FC<SwipeableCardProps> = ({ entities, showRating}) => {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [position] = useState(new Animated.ValueXY());
 
     const handleSwipe = (direction: string) => {
         if (direction === 'Left' || direction === 'Right') {
-            setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, companies.length - 1));
+            setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, entities.length - 1));
         }
         Animated.spring(position, { toValue: { x: 0, y: 0 }, useNativeDriver: false }).start();
     };
@@ -48,7 +49,7 @@ const SwipeableCard: React.FC<SwipeableCardProps> = ({ companies}) => {
     return (
         <View style={styles.container}>
             <View style={styles.cardContainer}>
-                {companies.map((company, index) =>
+                {entities.map((company, index) =>
                         index === currentIndex && (
                             <Animated.View
                                 key={company.legalName}
@@ -71,7 +72,9 @@ const SwipeableCard: React.FC<SwipeableCardProps> = ({ companies}) => {
                                     <View style={styles.mainText}>
                                         <Text style={styles.occupation}>{company.vacancyName}</Text>
                                         <Text style={styles.name}>{company.legalName}</Text>
-                                        <Image source={require('@/assets/images/jobs/rating.png')} style={{ marginTop: 5, alignSelf: 'center', transform: [{ scale: 0.8 }] }} />
+                                        {showRating &&
+                                            <Image source={require('@/assets/images/jobs/rating.png')} style={{ marginTop: 5, alignSelf: 'center', transform: [{ scale: 0.8 }] }} />
+                                        }
                                     </View>
                                     <View style={styles.contactInfoContainer}>
                                         <Tag key={0} text={company.experience} type="red" icon="clock-o" style={{ marginTop: -10 }} />

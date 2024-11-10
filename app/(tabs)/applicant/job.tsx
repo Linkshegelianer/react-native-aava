@@ -63,7 +63,7 @@ export default function ApplicantJobScreen() {
           headerBackgroundColor={{ light: '#E4E6FF', dark: '#E4E6FF' }}
           headerImage={<Ionicons size={310} name="cloud-outline" style={styles.headerImage} />}>
         <ThemedView style={styles.stepContainer}>
-              <SwipeableCardScreen companies={companies} />
+              <SwipeableCardScreen companies={companies} showRating={true} />
         </ThemedView>
     </ParallaxScrollView>
   );

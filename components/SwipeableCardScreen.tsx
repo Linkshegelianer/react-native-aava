@@ -13,10 +13,10 @@ interface Company {
     prioritiesTags: { text: string }[];
 }
 
-const SwipeableCardScreen: React.FC<{ companies: Company[] }> = ({ companies }) => {
+const SwipeableCardScreen: React.FC<{ companies: Company[], showRating: boolean }> = ({ companies, showRating }) => {
     return (
         <View style={styles.screenContainer}>
-            <SwipeableCard companies={companies} />
+            <SwipeableCard entities={companies} showRating={showRating} />
             <View style={styles.buttonContainer}>
                 <View style={[styles.circleButton, { backgroundColor: '#F58183' }]}>
                     <FontAwesome name="times" size={24} color="#fff" />

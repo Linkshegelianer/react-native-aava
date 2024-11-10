@@ -4,7 +4,7 @@ import {ThemedView} from '@/components/ThemedView';
 import Ionicons from "@expo/vector-icons/Ionicons";
 import SwipeableCardScreen from "@/components/SwipeableCardScreen";
 
-interface Company {
+interface Entity {
     legalName: string;
     url: any;
     vacancyName: string;
@@ -24,7 +24,7 @@ const prioritiesTagsIBM = [{text: "On Site"}, {text: "Comfortable Office"}, {tex
 const superpowerTagsAava = [{text: "Jiira"}, {text: "Sketch"}, {text: "Figma"}, {text: "User flow"}, {text: "Research"}, {text: "HTML/CSS"}];
 const prioritiesTagsAava = [{text: "Hybrid"}, {text: "Flexible vacations"}, {text: "Strong Team Spirit"}];
 
-const companies: Company[] = [
+const entities: Entity[] = [
     {
         legalName: 'Max Mustermann',
         url: '../assets/images/employer/dummy-user-example.png',
@@ -63,7 +63,7 @@ export default function EmployerJobScreen() {
             headerBackgroundColor={{ light: '#E4E6FF', dark: '#E4E6FF' }}
             headerImage={<Ionicons size={310} name="cloud-outline" style={styles.headerImage} />}>
             <ThemedView style={styles.stepContainer}>
-                <SwipeableCardScreen companies={companies} />
+                <SwipeableCardScreen companies={entities} showRating={false} />
             </ThemedView>
         </ParallaxScrollView>
     );
