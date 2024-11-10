@@ -1,6 +1,7 @@
-# Welcome to your Expo app 👋
+# Swipe me to hire 👋
 
-This is a source code repo for team 'Rock botton' and our solution for Aava.
+This is the source code for Swipe Me to Hire (SMTH)—an app designed to make job searching and hiring stress-free. 
+Developed by the talented team 'Rock Bottom' for Aava Lääkärikeskus at Junction 2024, held October 8-10 in Helsinki.
 
 ## Get started
 
