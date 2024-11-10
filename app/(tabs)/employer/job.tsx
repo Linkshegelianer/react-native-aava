@@ -1,9 +1,8 @@
-import React from 'react';
-import ParallaxScrollView from "@/components/ParallaxScrollView";
+import {StyleSheet} from 'react-native';
+import ParallaxScrollView from '@/components/ParallaxScrollView';
+import {ThemedView} from '@/components/ThemedView';
 import Ionicons from "@expo/vector-icons/Ionicons";
-import {ThemedView} from "@/components/ThemedView";
 import SwipeableCardScreen from "@/components/SwipeableCardScreen";
-import {StyleSheet} from "react-native";
 
 interface Company {
     legalName: string;
@@ -27,8 +26,8 @@ const prioritiesTagsAava = [{text: "Hybrid"}, {text: "Flexible vacations"}, {tex
 
 const companies: Company[] = [
     {
-        legalName: 'Google',
-        url: '../assets/images/jobs/google-logo.png',
+        legalName: 'Max Mustermann',
+        url: '../assets/images/employer/dummy-user-example.png',
         vacancyName: "UI/UX Designer",
         experience: "1 year",
         location: "Remote",
@@ -37,8 +36,8 @@ const companies: Company[] = [
         prioritiesTags: prioritiesTagsGoogle
     },
     {
-        legalName: 'IBM',
-        url: '../assets/images/jobs/ibm-logo.png',
+        legalName: 'Matti Meikäläinen',
+        url: '../assets/images/employer/dummy-user-example.png',
         vacancyName: "Product Designer",
         experience: "3 years",
         location: "California",
@@ -47,8 +46,8 @@ const companies: Company[] = [
         prioritiesTags: prioritiesTagsIBM
     },
     {
-        legalName: 'Aava',
-        url: '../assets/images/jobs/aava-logo.png',
+        legalName: 'John Doe',
+        url: '../assets/images/employer/dummy-user-example.png',
         vacancyName: "Senior UX Designer",
         experience: "5 years",
         location: "Helsinki",
