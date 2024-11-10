@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
         width: 133,
         height: 133,
         position: 'absolute',
-        top: 85,
-        left: 110
+        top: 100,
+        left: 120
     },
     buttonBlock: {
         flex: 1,
