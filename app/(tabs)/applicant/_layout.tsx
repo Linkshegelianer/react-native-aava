@@ -11,12 +11,12 @@ export default function ApplicantLayout() {
         <Tabs
             screenOptions={{
                 tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-                headerShown: false,  // Скрыть заголовок
+                headerShown: false,
             }}
         >
-            {/* Вкладка "Home" */}
+
             <Tabs.Screen
-                name="home"  // Путь: app/applicant/home.tsx
+                name="home"
                 options={{
                     title: 'Home',
                     tabBarIcon: ({ color, focused }) => (
@@ -25,9 +25,8 @@ export default function ApplicantLayout() {
                 }}
             />
 
-            {/* Вкладка "Job" */}
             <Tabs.Screen
-                name="job"  // Путь: app/applicant/job.tsx
+                name="job"
                 options={{
                     title: 'Job',
                     tabBarIcon: ({ color, focused }) => (
@@ -36,9 +35,8 @@ export default function ApplicantLayout() {
                 }}
             />
 
-            {/* Вкладка "Messages" */}
             <Tabs.Screen
-                name="messages"  // Путь: app/applicant/messages.tsx
+                name="messages"
                 options={{
                     title: 'Messages',
                     tabBarIcon: ({ color, focused }) => (

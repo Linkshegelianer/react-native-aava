@@ -42,7 +42,6 @@ export default function Navigation() {
 
 const styles = StyleSheet.create({
     mainText: {
-        fontFamily: 'Roboto',
         fontSize: 48,
         fontWeight: 700,
         textAlign: 'left',
@@ -54,8 +53,8 @@ const styles = StyleSheet.create({
         width: 133,
         height: 133,
         position: 'absolute',
-        top: 85,
-        left: 110
+        top: 100,
+        left: 120
     },
     buttonBlock: {
         flex: 1,
@@ -71,7 +70,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     buttonText: {
-        fontFamily: 'Roboto',
         fontSize: 14,
         color: 'white',
         fontWeight: 500

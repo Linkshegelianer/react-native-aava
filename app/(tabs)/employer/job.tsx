@@ -12,10 +12,10 @@ export default function TabLayout() {
       <Tabs
           screenOptions={{
             tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-            headerShown: false, // Отключаем заголовок на уровне табов
+            headerShown: false,
           }}
       >
-        {/* Экран Job */}
+
         <Tabs.Screen
             name="applicant/job"
             options={{
@@ -26,7 +26,6 @@ export default function TabLayout() {
             }}
         />
 
-        {/* Экран Messages */}
         <Tabs.Screen
             name="applicant/messages"
             options={{
@@ -37,7 +36,6 @@ export default function TabLayout() {
             }}
         />
 
-        {/* Экран Home */}
         <Tabs.Screen
             name="applicant/home"
             options={{
