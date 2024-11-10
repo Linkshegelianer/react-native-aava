@@ -42,7 +42,6 @@ export default function Navigation() {
 
 const styles = StyleSheet.create({
     mainText: {
-        fontFamily: 'Roboto',
         fontSize: 48,
         fontWeight: 700,
         textAlign: 'left',
@@ -71,7 +70,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     buttonText: {
-        fontFamily: 'Roboto',
         fontSize: 14,
         color: 'white',
         fontWeight: 500

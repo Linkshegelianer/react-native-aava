@@ -1,52 +1,96 @@
-import { Tabs } from 'expo-router';
 import React from 'react';
+import ParallaxScrollView from "@/components/ParallaxScrollView";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import {ThemedView} from "@/components/ThemedView";
+import SwipeableCardScreen from "@/components/SwipeableCardScreen";
+import {StyleSheet} from "react-native";
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
-  return (
-      <Tabs
-          screenOptions={{
-            tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-            headerShown: false, // Отключаем заголовок на уровне табов
-          }}
-      >
-        {/* Экран Job */}
-        <Tabs.Screen
-            name="applicant/job"
-            options={{
-              title: 'Job',
-              tabBarIcon: ({ color, focused }) => (
-                  <TabBarIcon name={focused ? 'briefcase' : 'briefcase-outline'} color={color} />
-              ),
-            }}
-        />
-
-        {/* Экран Messages */}
-        <Tabs.Screen
-            name="applicant/messages"
-            options={{
-              title: 'Messages',
-              tabBarIcon: ({ color, focused }) => (
-                  <TabBarIcon name={focused ? 'mail' : 'mail-outline'} color={color} />
-              ),
-            }}
-        />
-
-        {/* Экран Home */}
-        <Tabs.Screen
-            name="applicant/home"
-            options={{
-              title: 'Home',
-              tabBarIcon: ({ color, focused }) => (
-                  <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-              ),
-            }}
-        />
-      </Tabs>
-  );
+interface Company {
+    legalName: string;
+    url: any;
+    vacancyName: string;
+    experience: string; // For the "red" tag
+    location: string;   // For the "green" tag
+    postedTime: string; // For the "rose" tag
+    superpowerTags: { text: string }[];
+    prioritiesTags: { text: string }[];
 }
+
+const superpowerTagsGoogle = [{text: "Adobe XD"}, {text: "Figma"}, {text: "Sketch"}, {text: "Remote-teams"}];
+const prioritiesTagsGoogle = [{text: "Remote"}, {text: "Hybrid"}, {text: "Flexible hours"}];
+
+const superpowerTagsIBM = [{text: "Adobe Photoshop"}, {text: "Figma"}, {text: "Sketch"}, {text: "Project Management"}];
+const prioritiesTagsIBM = [{text: "On Site"}, {text: "Comfortable Office"}, {text: "Strong Team Spirit"}];
+
+const superpowerTagsAava = [{text: "Jiira"}, {text: "Sketch"}, {text: "Figma"}, {text: "User flow"}, {text: "Research"}, {text: "HTML/CSS"}];
+const prioritiesTagsAava = [{text: "Hybrid"}, {text: "Flexible vacations"}, {text: "Strong Team Spirit"}];
+
+const companies: Company[] = [
+    {
+        legalName: 'Google',
+        url: '../assets/images/jobs/google-logo.png',
+        vacancyName: "UI/UX Designer",
+        experience: "1 year",
+        location: "Remote",
+        postedTime: "Today",
+        superpowerTags: superpowerTagsGoogle,
+        prioritiesTags: prioritiesTagsGoogle
+    },
+    {
+        legalName: 'IBM',
+        url: '../assets/images/jobs/ibm-logo.png',
+        vacancyName: "Product Designer",
+        experience: "3 years",
+        location: "California",
+        postedTime: "Last Week",
+        superpowerTags: superpowerTagsIBM,
+        prioritiesTags: prioritiesTagsIBM
+    },
+    {
+        legalName: 'Aava',
+        url: '../assets/images/jobs/aava-logo.png',
+        vacancyName: "Senior UX Designer",
+        experience: "5 years",
+        location: "Helsinki",
+        postedTime: "Last Week",
+        superpowerTags: superpowerTagsAava,
+        prioritiesTags: prioritiesTagsAava
+    },
+];
+
+export default function EmployerJobScreen() {
+    return (
+        <ParallaxScrollView
+            headerBackgroundColor={{ light: '#E4E6FF', dark: '#E4E6FF' }}
+            headerImage={<Ionicons size={310} name="cloud-outline" style={styles.headerImage} />}>
+            <ThemedView style={styles.stepContainer}>
+                <SwipeableCardScreen companies={companies} />
+            </ThemedView>
+        </ParallaxScrollView>
+    );
+}
+
+const styles = StyleSheet.create({
+    titleContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+    },
+    headerImage: {
+        color: '#8181F5',
+        bottom: -90,
+        left: -35,
+        position: 'absolute',
+    },
+    stepContainer: {
+        gap: 8,
+        marginBottom: 8,
+    },
+    reactLogo: {
+        height: 178,
+        width: 290,
+        bottom: 0,
+        left: 0,
+        position: 'absolute',
+    },
+});
