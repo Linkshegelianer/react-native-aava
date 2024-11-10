@@ -57,7 +57,7 @@ const entities: Entity[] = [
     },
 ];
 
-export default function EmployerJobScreen() {
+export default function EmployerApplicantsScreen() {
     return (
         <ParallaxScrollView
             headerBackgroundColor={{ light: '#E4E6FF', dark: '#E4E6FF' }}

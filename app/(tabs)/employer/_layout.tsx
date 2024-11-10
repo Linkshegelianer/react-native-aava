@@ -27,9 +27,9 @@ export default function EmployerLayout() {
 
             {/* Вкладка "Job" */}
             <Tabs.Screen
-                name="job"  // Путь: app/employer/job.tsx
+                name="applicants"  // Путь: app/employer/applicants.tsx
                 options={{
-                    title: 'Job',
+                    title: 'Applicants',
                     tabBarIcon: ({ color, focused }) => (
                         <TabBarIcon name={focused ? 'briefcase' : 'briefcase-outline'} color={color} />
                     ),
