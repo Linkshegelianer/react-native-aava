@@ -26,9 +26,9 @@ export default function EmployerLayout() {
             />
 
             <Tabs.Screen
-                name="job"
+                name="applicants"
                 options={{
-                    title: 'Job',
+                    title: 'Applicants',
                     tabBarIcon: ({ color, focused }) => (
                         <TabBarIcon name={focused ? 'briefcase' : 'briefcase-outline'} color={color} />
                     ),
