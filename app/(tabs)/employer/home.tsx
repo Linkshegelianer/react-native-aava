@@ -1,4 +1,4 @@
-// app/employer/home.tsx
+// app/employer/events.tsx
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { ThemedView } from "@/components/ThemedView";
@@ -17,7 +17,6 @@ export default function EmployerProfileScreen() {
                 <ThemedText type="title">Explore</ThemedText>
             </ThemedView>
             <ThemedText>This app includes example code to help you get started.</ThemedText>
-            {/* Другие компоненты здесь */}
         </ParallaxScrollView>
     );
 }

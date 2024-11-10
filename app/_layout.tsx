@@ -29,11 +29,9 @@ export default function RootLayout() {
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack
             screenOptions={{
-              headerShown: false, // Убираем заголовок на всех уровнях стека
+              headerShown: false,
             }}
         >
-          {/* Корневой стек */}
-            {/*<Stack.Screen name="(tabs)" options={{ headerShown: false }} />*/}
           <Stack.Screen name="+not-found" options={{ title: 'Not Found' }} />
         </Stack>
       </ThemeProvider>

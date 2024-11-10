@@ -11,12 +11,11 @@ export default function EmployeeLayout() {
         <Tabs
             screenOptions={{
                 tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-                headerShown: false,  // Скрыть заголовок
+                headerShown: false,
             }}
         >
-            {/* Вкладка "Home" */}
             <Tabs.Screen
-                name="home"  // Путь: app/employee/home.tsx
+                name="home"
                 options={{
                     title: 'Home',
                     tabBarIcon: ({ color, focused }) => (
@@ -25,9 +24,18 @@ export default function EmployeeLayout() {
                 }}
             />
 
-            {/* Вкладка "Messages" */}
             <Tabs.Screen
-                name="messages"  // Путь: app/employee/messages.tsx
+                name="events"
+                options={{
+                    title: 'Events',
+                    tabBarIcon: ({ color, focused }) => (
+                        <TabBarIcon name={focused ? 'people' : 'people-outline'} color={color} />
+                    ),
+                }}
+            />
+
+            <Tabs.Screen
+                name="messages"
                 options={{
                     title: 'Messages',
                     tabBarIcon: ({ color, focused }) => (
